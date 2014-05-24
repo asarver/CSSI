@@ -1,0 +1,13 @@
+<html>
+<body>
+{% for game in games %}
+{% if game.dealer_won %}
+<p> The dealer won a game against {{ game.user }}</p>
+{% else %}
+<p> {{ game.user }} won a game against the dealer</p>
+<br />
+{% endif %}
+{{ game.user }}
+{% endfor %}
+</body>
+</html>

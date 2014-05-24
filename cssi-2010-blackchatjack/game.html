@@ -1,0 +1,126 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function increaseBet(form) {
+	var oldBet = parseInt(form.bet_amount.value);
+	var newBet = oldBet + 50;
+	form.bet_amount.value = newBet;
+
+}
+
+function decreaseBet(form) {
+	var oldBet = parseInt(form.bet_amount.value);
+	var newBet = oldBet - 50
+	if (newBet < 0) {
+		newBet = 0
+	}
+	form.bet_amount.value = newBet
+
+}
+</script>
+
+<style type="text/css">
+
+.container {
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	border-color: black;
+	border-width: 1px;
+	border-style: inset;
+	width: 100%;
+	background-repeat: repeat;
+	background-image: url(../images/bg.png);
+	height: 100%;
+}
+
+.back {
+	/*background-color: white;
+	background-image: url(../images/wall.png);
+	background-repeat: repeat-x;*/
+}
+
+.cards {
+	height: 97px;
+	width: 500px;
+	/* background-image: url(images/dealer.png); 
+	background-repeat: repeat; */
+	float: left;
+	margin-top:30px;
+	margin-left: 150px;
+}
+
+.deck {
+	float: right;
+	margin-top: -100px;
+}
+
+.left_player {
+	height: 220px;
+	width: 300px;
+	margin-left: 0px;
+	margin-top: 360px;
+}
+
+.right_player {
+	height: 200px;
+	width: 300px;
+	float: right;
+	margin-top: -200px;
+}
+
+</style>
+<title>
+Black-Chat-Jack
+</title>
+</head>
+<body class="back">
+<div class="container">
+	<div class="cards">
+		<table border='0' style="margin: auto;">
+			<tr>
+				{% for card in dealer_cards %}
+				<td>{{ card }}</td>
+				{% endfor %}
+			</tr>
+		</table>
+		<div class="deck">
+			<img src="../images/back.png" />
+		</div>
+	</div>
+	
+	<div class="left_player">
+		<table border='0' style="margin: auto;">
+			<tr>
+				{% for card in player_cards %}
+				<td>{{ card }}</td>
+				{% endfor %}
+			</tr>
+		</table>
+		<form name="playform" action="play" method="post">
+		<input style="margin-top: 20px; margin-left: 110px; font-size: 18px;" type="submit" name="action" value="Hit" />
+		<input style="margin-top: 20px; margin-right: 80px; font-size: 18px;" type="submit" name="action" value="Stay" />
+		<div style="text-align: center; padding-top: 5px">
+			Cash: {{ player_cash }} <br />
+			Bet Amount: <input style="width: 50px" type="text" name="bet_amount" readonly="true" value="100"/> <br />
+			<input type="button" name="bet_plus" value="+" onclick="increaseBet(this.form)" /> <input type="button" name="bet_minus" value="-" onclick="decreaseBet(this.form)"/>
+			<input type="hidden" name="game_id" value="{{ game_id }}" />
+			<input type="hidden" name="user_id" value="{{ user_id }}" />
+		</form>
+		</div>
+	</div>
+	<!--
+	<div class="right_player">
+		<table border='0' style="margin: auto;">
+			<tr>
+				<td><img src="../images/back.png" /></td>
+				<td><img src="../images/back.png" /></td>
+			</tr>
+		</table>
+	</div>
+	!-->
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+application: cssi-20-10-aks
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /images
+  static_dir: artwork
+- url: /books.html
+  script: books.py
+- url: /hello.html
+  script: helloworld.py
+- url: /.*
+  script: myapp.py

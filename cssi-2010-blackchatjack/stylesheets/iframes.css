@@ -1,0 +1,41 @@
+/* stylesheet for iframes */
+
+body {
+    background-image: url(/images/bg.png);
+	background-repeat: repeat;
+	font-family: verdana;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-align: left-justified;
+}
+
+h1 {
+	font-family: verdana;
+	font-size: 28px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+a:link, a:active, a:visited {
+	font-family: verdana;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+a:hover {
+	font-family: verdana;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+img.display {
+	height: 250px;
+	width: 200px;
+	border: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+	
